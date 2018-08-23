@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InterimHistory index{% endblock %}
+
+{% block body %}
+    <h1>InterimHistory index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Last_hematology_vist</th>
+                <th>Hematologist</th>
+                <th>Complications_since_last_vist</th>
+                <th>Notes</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for interim_history in interim_histories %}
+            <tr>
+                <td>{{ interim_history.id }}</td>
+                <td>{{ interim_history.lastHematologyVist ? interim_history.lastHematologyVist|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ interim_history.hematologist }}</td>
+                <td>{{ interim_history.complicationsSinceLastVist }}</td>
+                <td>{{ interim_history.notes }}</td>
+                <td>
+                    <a href="{{ path('interim_history_show', {'id': interim_history.id}) }}">show</a>
+                    <a href="{{ path('interim_history_edit', {'id': interim_history.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('interim_history_new') }}">Create new</a>
+{% endblock %}

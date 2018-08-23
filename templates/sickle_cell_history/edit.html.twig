@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SickleCellHistory{% endblock %}
+
+{% block body %}
+    <h1>Edit SickleCellHistory</h1>
+
+    {{ include('sickle_cell_history/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('sickle_cell_history_index') }}">back to list</a>
+
+    {{ include('sickle_cell_history/_delete_form.html.twig') }}
+{% endblock %}

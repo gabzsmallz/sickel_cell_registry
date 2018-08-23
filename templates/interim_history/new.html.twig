@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New InterimHistory{% endblock %}
+
+{% block body %}
+    <h1>Create new InterimHistory</h1>
+
+    {{ include('interim_history/_form.html.twig') }}
+
+    <a href="{{ path('interim_history_index') }}">back to list</a>
+{% endblock %}

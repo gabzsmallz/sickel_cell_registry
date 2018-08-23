@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div id="report">
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+	$(document).ready(function(){
+		var chart= new CanvasJS.Chart("report",{
+			title:{
+				text: "Patients report"
+			},
+			data: [
+				{
+					type: "column",
+					dataPoints: {{ patients| raw }}
+				}
+			]
+		});
+		chart.render();
+	});
+	</script>
+{% endblock %}

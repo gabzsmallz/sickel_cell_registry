@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Demograhics{% endblock %}
+
+{% block body %}
+    <h1>Edit Demograhics</h1>
+
+    {{ include('demograhics/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('demograhics_index') }}">back to list</a>
+
+    {{ include('demograhics/_delete_form.html.twig') }}
+{% endblock %}

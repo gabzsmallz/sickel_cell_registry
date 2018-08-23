@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SickleCellHistory{% endblock %}
+
+{% block body %}
+    <h1>SickleCellHistory</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sickle_cell_history.id }}</td>
+            </tr>
+            <tr>
+                <th>Hospitalization</th>
+                <td>{{ sickle_cell_history.hospitalization ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Hospitalization_no_time</th>
+                <td>{{ sickle_cell_history.hospitalizationNoTime }}</td>
+            </tr>
+            <tr>
+                <th>Aplastic_crisis</th>
+                <td>{{ sickle_cell_history.aplasticCrisis ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Dactylitis</th>
+                <td>{{ sickle_cell_history.dactylitis ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Retinopathy</th>
+                <td>{{ sickle_cell_history.retinopathy ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Splenic_sequestration</th>
+                <td>{{ sickle_cell_history.splenicSequestration ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Acute_chest_syndrome</th>
+                <td>{{ sickle_cell_history.acuteChestSyndrome ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Acute_chest_syndrome_date</th>
+                <td>{{ sickle_cell_history.acuteChestSyndromeDate ? sickle_cell_history.acuteChestSyndromeDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Avascular_necrosis</th>
+                <td>{{ sickle_cell_history.avascularNecrosis ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Icu_admission</th>
+                <td>{{ sickle_cell_history.icuAdmission ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Icu_admission_date</th>
+                <td>{{ sickle_cell_history.icuAdmissionDate ? sickle_cell_history.icuAdmissionDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Cholecystectomy</th>
+                <td>{{ sickle_cell_history.cholecystectomy ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Splenectomy</th>
+                <td>{{ sickle_cell_history.splenectomy ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Tonsillectomy</th>
+                <td>{{ sickle_cell_history.tonsillectomy ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Tonsillectomy_adenoidectomy</th>
+                <td>{{ sickle_cell_history.tonsillectomyAdenoidectomy ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Others</th>
+                <td>{{ sickle_cell_history.others }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('sickle_cell_history_index') }}">back to list</a>
+
+    <a href="{{ path('sickle_cell_history_edit', {'id': sickle_cell_history.id}) }}">edit</a>
+
+    {{ include('sickle_cell_history/_delete_form.html.twig') }}
+{% endblock %}

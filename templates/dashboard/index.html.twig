@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{# block stylesheets #}
+{# parent() #}
+{#
+<style> 
+.red{
+ color: red;
+}
+.blue{
+ color:blue;
+}
+.green{
+ color:green;
+ }
+</style>
+#}
+{# endblock 3}
+
+{# block sidemenu #}
+	{# parent() #}
+	{#
+	<ul>
+		<li><a href="#">Extra</a></li>
+	</ul>
+	#}
+{# endblock #}
+{# block body #}
+{#
+	<h1>Add record: Session <b>{{host}}</b></h1>
+#}
+	{# for i in array #}
+	{#
+	<div class="{{ cycle(['red','blue','green'],loop.index0) }}">
+		<p>{{ i|upper }}</p>
+	</div>
+	{% endfor %}
+	{% for letter in 'a'..'z' %}
+		{{ include('dashboard/letter_details.html.twig') }}
+	{% endfor %}
+	
+	<div>
+		{{ desc|raw }}
+	</div>
+	<div id="chartContainer" style="height: 300px; width: 100%;">---</div>
+	#}
+{# endblock @}
+
+{# block javascripts #}
+	{# parent() #}
+{#
+<script type="text/javascript">
+
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: "My First Chart in CanvasJS"              
+		},
+		data: [              
+		{
+			// Change type to "doughnut", "line", "splineArea", etc.
+			type: "column",
+			dataPoints: [
+				{ label: "apple",  y: 10  },
+				{ label: "orange", y: 15  },
+				{ label: "banana", y: 25  },
+				{ label: "mango",  y: 30  },
+				{ label: "grape",  y: 28  }
+			]
+		}
+		]
+	});
+	chart.render();
+}
+</script>
+#}
+{# endblock #}
+
+{% block body %}
+<div class="jumbotron">
+	<h1 class="display-4"><img src="{{ absolute_url(asset('img/kisumu_logo.png')) }}" alt="logo" class="img-fluid"/>Welcome to Kisumu County Sickle Cell registry!</h1>
+	<p class="lead">Sickle cell anemia is an inherited form of anemia, a condition in which there aren’t enough healthy blood red cells to carry adequate oxygen throughout the body</p>
+	<p>Study conducted by the World Health Organization and Masinde Muliro University of Science and Technology has shown Western Kenya accounts for 30 per cent of all sickle cell cases in the county</p>
+</div>
+{% endblock %}

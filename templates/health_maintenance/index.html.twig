@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HealthMaintenance index{% endblock %}
+
+{% block body %}
+    <h1>HealthMaintenance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tcd_screening_date</th>
+                <th>Tcd_screening_result</th>
+                <th>Recommendations</th>
+                <th>Next_tcd_screening_date</th>
+                <th>Specialist</th>
+                <th>Specialist_visit_date</th>
+                <th>Notes</th>
+                <th>Immunization</th>
+                <th>Immunization_date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for health_maintenance in health_maintenances %}
+            <tr>
+                <td>{{ health_maintenance.id }}</td>
+                <td>{{ health_maintenance.tcdScreeningDate ? health_maintenance.tcdScreeningDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ health_maintenance.tcdScreeningResult }}</td>
+                <td>{{ health_maintenance.recommendations }}</td>
+                <td>{{ health_maintenance.nextTcdScreeningDate ? health_maintenance.nextTcdScreeningDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ health_maintenance.specialist }}</td>
+                <td>{{ health_maintenance.specialistVisitDate ? health_maintenance.specialistVisitDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ health_maintenance.notes }}</td>
+                <td>{{ health_maintenance.immunization }}</td>
+                <td>{{ health_maintenance.immunizationDate ? health_maintenance.immunizationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('health_maintenance_show', {'id': health_maintenance.id}) }}">show</a>
+                    <a href="{{ path('health_maintenance_edit', {'id': health_maintenance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('health_maintenance_new') }}">Create new</a>
+{% endblock %}

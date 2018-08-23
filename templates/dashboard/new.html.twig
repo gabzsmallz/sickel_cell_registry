@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block stylesheet %}
+{{ parent() }}
+<style>
+.form_element{
+	color: blue;
+	border: 3px solid;
+}
+</style>
+{% endblock %}
+{% block body %}
+	{{ form_start(form, {'attr': {'novalidate': 'novalidate'}, 'action': path('submit_form'), 'method': 'POST'}) }}
+		{{ form_errors(form) }}
+		
+		<div>
+			{{ form_label(form.task,'Describe task:') }}
+			{{ form_errors(form.task) }}
+			{{ form_widget(form.task,{'attr':{'class':'form_element'}}) }}
+			{{ form_help(form.task) }}
+		</div>
+		<div>
+			<p><b>{{ form.task.vars.full_name }}</b></p>
+			<p><b>{{ form.task.vars.id }}</b></p>
+		</div>
+		{{ form_row(form.file) }}
+		{{ form_row(form.status,{label_attr:{class: 'radio-custom'}} ) }}
+		{{ form_row(form.active,{label_attr:{class: 'checkbox-custom'}} ) }}
+	{{ form_end(form) }}
+{% endblock %}

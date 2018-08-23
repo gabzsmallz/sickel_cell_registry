@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BaselineData index{% endblock %}
+
+{% block body %}
+    <h1>BaselineData index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>O2_sat</th>
+                <th>White_blood_cell_count</th>
+                <th>Hemoglobin</th>
+                <th>Platelet</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for baseline_datum in baseline_datas %}
+            <tr>
+                <td>{{ baseline_datum.id }}</td>
+                <td>{{ baseline_datum.height }}</td>
+                <td>{{ baseline_datum.weight }}</td>
+                <td>{{ baseline_datum.o2Sat }}</td>
+                <td>{{ baseline_datum.whiteBloodCellCount }}</td>
+                <td>{{ baseline_datum.hemoglobin }}</td>
+                <td>{{ baseline_datum.platelet }}</td>
+                <td>
+                    <a href="{{ path('baseline_data_show', {'id': baseline_datum.id}) }}">show</a>
+                    <a href="{{ path('baseline_data_edit', {'id': baseline_datum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('baseline_data_new') }}">Create new</a>
+{% endblock %}

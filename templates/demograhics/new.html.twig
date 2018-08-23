@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Demograhics{% endblock %}
+
+{% block body %}
+    <h1>Create new Demograhics</h1>
+
+    {{ include('demograhics/_form.html.twig') }}
+
+    <a href="{{ path('demograhics_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InterimHistory{% endblock %}
+
+{% block body %}
+    <h1>InterimHistory</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ interim_history.id }}</td>
+            </tr>
+            <tr>
+                <th>Last_hematology_vist</th>
+                <td>{{ interim_history.lastHematologyVist ? interim_history.lastHematologyVist|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hematologist</th>
+                <td>{{ interim_history.hematologist }}</td>
+            </tr>
+            <tr>
+                <th>Complications_since_last_vist</th>
+                <td>{{ interim_history.complicationsSinceLastVist }}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ interim_history.notes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('interim_history_index') }}">back to list</a>
+
+    <a href="{{ path('interim_history_edit', {'id': interim_history.id}) }}">edit</a>
+
+    {{ include('interim_history/_delete_form.html.twig') }}
+{% endblock %}

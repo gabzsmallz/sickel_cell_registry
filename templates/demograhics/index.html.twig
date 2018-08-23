@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demograhics index{% endblock %}
+
+{% block body %}
+    <h1>Demograhics index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Diagnosis</th>
+                <th>Doctor</th>
+                <th>Date_of_last_visit</th>
+                <th>Method_of_contact</th>
+                <th>Purpose_of_visit</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demograhic in demograhics %}
+            <tr>
+                <td>{{ demograhic.id }}</td>
+                <td>{{ demograhic.diagnosis }}</td>
+                <td>{{ demograhic.doctor }}</td>
+                <td>{{ demograhic.dateOfLastVisit ? demograhic.dateOfLastVisit|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ demograhic.methodOfContact }}</td>
+                <td>{{ demograhic.purposeOfVisit }}</td>
+                <td>
+                    <a href="{{ path('demograhics_show', {'id': demograhic.id}) }}">show</a>
+                    <a href="{{ path('demograhics_edit', {'id': demograhic.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('demograhics_new') }}">Create new</a>
+{% endblock %}

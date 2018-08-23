@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SickleCellHistory{% endblock %}
+
+{% block body %}
+    <h1>Create new SickleCellHistory</h1>
+
+    {{ include('sickle_cell_history/_form.html.twig') }}
+
+    <a href="{{ path('sickle_cell_history_index') }}">back to list</a>
+{% endblock %}

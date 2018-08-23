@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BaselineData{% endblock %}
+
+{% block body %}
+    <h1>BaselineData</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ baseline_datum.id }}</td>
+            </tr>
+            <tr>
+                <th>Height</th>
+                <td>{{ baseline_datum.height }}</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ baseline_datum.weight }}</td>
+            </tr>
+            <tr>
+                <th>O2_sat</th>
+                <td>{{ baseline_datum.o2Sat }}</td>
+            </tr>
+            <tr>
+                <th>White_blood_cell_count</th>
+                <td>{{ baseline_datum.whiteBloodCellCount }}</td>
+            </tr>
+            <tr>
+                <th>Hemoglobin</th>
+                <td>{{ baseline_datum.hemoglobin }}</td>
+            </tr>
+            <tr>
+                <th>Platelet</th>
+                <td>{{ baseline_datum.platelet }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('baseline_data_index') }}">back to list</a>
+
+    <a href="{{ path('baseline_data_edit', {'id': baseline_datum.id}) }}">edit</a>
+
+    {{ include('baseline_data/_delete_form.html.twig') }}
+{% endblock %}

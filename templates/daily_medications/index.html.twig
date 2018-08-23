@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DailyMedications index{% endblock %}
+
+{% block body %}
+    <h1>DailyMedications index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prophylactic_antibiotics</th>
+                <th>Prophylactic_antibiotics_date_subscribed</th>
+                <th>Prophylactic_antibiotics_dose</th>
+                <th>Folic_acid</th>
+                <th>Folic_acid_date_subscribed</th>
+                <th>Dose_folic_acid</th>
+                <th>Hydroxyurea</th>
+                <th>Hydroxyurea_date_subscribed</th>
+                <th>Hydroxyurea_dose</th>
+                <th>Compliance</th>
+                <th>Side_effect</th>
+                <th>Notes</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for daily_medication in daily_medications %}
+            <tr>
+                <td>{{ daily_medication.id }}</td>
+                <td>{{ daily_medication.prophylacticAntibiotics ? 'Yes' : 'No' }}</td>
+                <td>{{ daily_medication.prophylacticAntibioticsDateSubscribed ? daily_medication.prophylacticAntibioticsDateSubscribed|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ daily_medication.prophylacticAntibioticsDose }}</td>
+                <td>{{ daily_medication.folicAcid ? 'Yes' : 'No' }}</td>
+                <td>{{ daily_medication.folicAcidDateSubscribed ? daily_medication.folicAcidDateSubscribed|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ daily_medication.doseFolicAcid }}</td>
+                <td>{{ daily_medication.hydroxyurea ? 'Yes' : 'No' }}</td>
+                <td>{{ daily_medication.hydroxyureaDateSubscribed ? daily_medication.hydroxyureaDateSubscribed|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ daily_medication.hydroxyureaDose }}</td>
+                <td>{{ daily_medication.compliance }}</td>
+                <td>{{ daily_medication.sideEffect }}</td>
+                <td>{{ daily_medication.notes }}</td>
+                <td>
+                    <a href="{{ path('daily_medications_show', {'id': daily_medication.id}) }}">show</a>
+                    <a href="{{ path('daily_medications_edit', {'id': daily_medication.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('daily_medications_new') }}">Create new</a>
+{% endblock %}

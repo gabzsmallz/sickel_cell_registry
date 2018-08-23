@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DailyMedications{% endblock %}
+
+{% block body %}
+    <h1>DailyMedications</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ daily_medication.id }}</td>
+            </tr>
+            <tr>
+                <th>Prophylactic_antibiotics</th>
+                <td>{{ daily_medication.prophylacticAntibiotics ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Prophylactic_antibiotics_date_subscribed</th>
+                <td>{{ daily_medication.prophylacticAntibioticsDateSubscribed ? daily_medication.prophylacticAntibioticsDateSubscribed|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Prophylactic_antibiotics_dose</th>
+                <td>{{ daily_medication.prophylacticAntibioticsDose }}</td>
+            </tr>
+            <tr>
+                <th>Folic_acid</th>
+                <td>{{ daily_medication.folicAcid ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Folic_acid_date_subscribed</th>
+                <td>{{ daily_medication.folicAcidDateSubscribed ? daily_medication.folicAcidDateSubscribed|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Dose_folic_acid</th>
+                <td>{{ daily_medication.doseFolicAcid }}</td>
+            </tr>
+            <tr>
+                <th>Hydroxyurea</th>
+                <td>{{ daily_medication.hydroxyurea ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Hydroxyurea_date_subscribed</th>
+                <td>{{ daily_medication.hydroxyureaDateSubscribed ? daily_medication.hydroxyureaDateSubscribed|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hydroxyurea_dose</th>
+                <td>{{ daily_medication.hydroxyureaDose }}</td>
+            </tr>
+            <tr>
+                <th>Compliance</th>
+                <td>{{ daily_medication.compliance }}</td>
+            </tr>
+            <tr>
+                <th>Side_effect</th>
+                <td>{{ daily_medication.sideEffect }}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ daily_medication.notes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('daily_medications_index') }}">back to list</a>
+
+    <a href="{{ path('daily_medications_edit', {'id': daily_medication.id}) }}">edit</a>
+
+    {{ include('daily_medications/_delete_form.html.twig') }}
+{% endblock %}
